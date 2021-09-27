@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  
+            
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper #306EFF blue ribbon">
+        	  
+          <a href="#" class="brand-logo">Telkop</a>
+          
+          <ul id="nav-mobile" class="right">
+            <li id="loginli"><a class="modal-trigger" href="#modal2">Login</a></li>
+         
+            <li  id="logoutli"><a onclick="logout()">Logout</a></li>
+          </ul>
+          
+           <ul id="nav-mobile" class="left">
+                &nbsp;&nbsp;
+          <img src="img/menu.png" alt="search" width="25px" height="50px" margin-bottom: 25px;>
+       
+          </ul>
+            <ul id="nav-mobile" class="right">
+                &nbsp;&nbsp;
+         <img id="proimg" class="circle" src="./assets/noimage.png" alt="noimage" style="width: 55px;height: auto;" />
+       
+          </ul>
+          
+          
+          
+        </div>
+      </nav>
+    <!--Signup Modal -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Sign Up</h4>
+      <form autocomplete="off" onsubmit="signup(event)">
+        <input type="email" id="signupEmail" placeholder="email" />
+        <input type="password" id="signupPassword" placeholder="password" />
+        <button class="btn waves-effect #306EFF blue ribbon" type="submit">submit</button>   
+             
+        <div class="nav-wrapper #fbc02d yellow darken-2">
+       <ul id="nav-mobile" class="right">
+        <li id="loginli" class="btn waves-effect #fbc02d yellow darken-2" ><a class="modal-trigger" href="#modal2">Log In</a></li>
+            </ul>
+            </div>
+       </form>
+      
+    </div>
+  </div>
+         
+      
+        <div class="clearfix">
+      
+     
+    <!--login Modal -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Log In</h4>
+      <form autocomplete="off" onsubmit="login(event)">
+        <input type="email" id="loginEmail" placeholder="email" />
+        <input type="password" id="loginPassword" placeholder="password" />
+        <button class="btn waves-effect #306EFF blue ribbon" type="submit">submit</button>   
+      </form>
+      
+                <div class="nav-wrapper #fbc02d yellow darken-2">
+       <ul id="nav-mobile" class="left">
+        <li id="signupli" class="btn waves-effect #fbc02d yellow darken-2" ><a class="modal-trigger" href="#modal1">Sing Up</a></li>
+            </ul>
+            </div>
+                      <div class="nav-wrapper #fbc02d yellow darken-2">
+       <ul id="nav-mobile" class="right">
+        <li id="loginli" class="btn waves-effect #fbc02d yellow darken-2" ><a class="modal-trigger" href="#modal2">Forget</a></li>
+            </ul>
+            </div>
+     
+    </div>
+  </div>
+    <!--edit profile -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Edit your details</h4>
+      <div class="file-field input-field">
+        <div class="btn #306EFF blue ribbon">
+          <span>File</span>
+          <input type="file" accept="image/*" onchange="uploadImage(event)" />
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <form autocomplete="off" id="editProfile" onsubmit="updateUserProfile(event)">
+        <input type="email" name="email" placeholder="Email" />
+        <input type="text" name="name" placeholder="Full Name" />
+        <input type="text" name="phone" placeholder="Phone Number" />
+        <input type="text" name="cuntry" placeholder="Cuntry" />
+        <input type="text" name="dateofbirth" placeholder="Date Of Birth" />
+        <input type="text" name="pass" placeholder="Password" />
+
+        <button class="btn waves-effect #fbc02d yellow darken-2" type="submit">submit</button>   
+      </form>
+  
+      
+     
+    </div>
+  </div>
+
+
+  <div class="center">
+    <h1>your account details</h1>
+    <img id="proimg" class="circle" src="./assets/noimage.png" alt="noimage" style="width: 50%;height: auto;" />
+    <div class="userDetails"></div>
+  </div>
+         
+  <table id="table" style="display: none;">
+    <thead>
+      <tr>
+          <th>email</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Cuntry</th>
+          <th>dateofbirth</th>
+          <th>Pass</th>
+      </tr>
+    </thead>
+
+    <tbody id="tbody">
+     
+    </tbody>
+  </table>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+</script>  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC39YGPKOV8S954JXGAXHpRQr7Bs_biB0Y",
+    authDomain: "telkop-2791c.firebaseapp.com",
+    projectId: "telkop-2791c",
+    storageBucket: "telkop-2791c.appspot.com",
+    messagingSenderId: "707546122336",
+    appId: "1:707546122336:web:3bc886903db25a868ddb05"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="./scripts/auth.js"></script>
+<script src="./scripts/firestore-db.js" ></script>
+
+</body>
+</html>
