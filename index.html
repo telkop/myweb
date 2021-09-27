@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- Compiled and minified CSS -->
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+       <link rel="stylesheet" type="text/css" href="css/sidebar.css">
+     
+       
+       <!--search end css-->
+       	<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.openBtn {
+  background: #f1f1f1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.openBtn:hover {
+  background: #bbb;
+}
+
+.overlay {
+  height: 40%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay input[type=text] {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #bbb;
+}
+</style>
+</head>
+<body>
+	
+	<div class="headers"></div>
+    <input type="checkbox" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="spinner top"></div>
+        <div class="spinner middle"></div>
+        <div class="spinner bottom"></div>
+    </label>
+    <div id="sidebarMenu">
+        <ul class="menu">
+          <li> <a href="Index.html"> <i class="fa fa-home" style="font-size:24px;"> Home </i> </a></li>
+          <li> <a href="profile.html"> <i class="fa fa-user-circle-o" style="font-size:24px;"> Account </i> </a></li>
+          <li> <a href="Index.html"> <i class="fa fa-bell" style="font-size:24px;"> Notification </i> </a></li>
+          <li> <a href="Index.html"> <i class="fa fa-android" style="font-size:24px;"> App </i> </a></li>
+          <li> <a href="Index.html"> <i class="fa fa-bitcoin" style="font-size:24px;"> Crypto </i> </a></li>
+          <li> <a href="Index.html"> <i class="fa fa-exclamation-circle" style="font-size:24px;"> Privacy Policy </i> </a></li>
+            
+            <li id="loginli"><a class="modal-trigger" href="#modal2"> <i class="fa fa-sign-in" style="font-size:24px;"> Log In </i> </a></li>
+           <li  id="logoutli"><a onclick="logout()"> <i class="fa fa-sign-out" style="font-size:24px;"> Log Out </i> </a></li>
+        </ul>
+    </div>
+	
+	
+	
+	
+	
+    <nav>
+    	 
+        <div class="nav-wrapper #306EFF blue ribbon"> 
+          <a href="#" class="brand-logo">Telkop</a>
+          <ul id="nav-mobile" class="right">
+         <class="openBtn" onclick="openSearch()"><i class="fa fa-ellipsis-v" style="font-size:22px;"></i>
+         &nbsp;&nbsp;&nbsp;
+           </ul>
+           <ul id="nav-mobile" class="right">
+         <class="openBtn" onclick="openSearch()"><i class="fa fa-bell" style="font-size:22px;"></i>
+         &nbsp;&nbsp;&nbsp;
+           </ul>
+           <ul id="nav-mobile" class="right">
+         <class="openBtn" onclick="openSearch()"><i class="fa fa-search" style="font-size:22px;"></i>
+          	&nbsp;&nbsp;&nbsp;
+           </ul>
+          
+          <ul id="nav-mobile" class="left">
+          	&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+       
+         <img id="proimg" class="circle" src="./assets/noimage.png" alt="noimage" style="width: 55px;height: auto;" />
+              </ul>
+               
+      </nav>
+          <!--search -->
+          	<div id="myOverlay" class="overlay">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+  <div class="overlay-content">
+    <form action="/action_page.php">
+      <script async src="https://cse.google.com/cse.js?cx=4545ba3f606a521d0"></script>
+<div class="gcse-search"></div>
+    </form>
+  </div>
+</div>
+  
+    <!--Signup Modal -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Sign Up</h4>
+      <form autocomplete="off" onsubmit="signup(event)">
+        <input type="email" id="signupEmail" placeholder="email" />
+        <input type="password" id="signupPassword" placeholder="password" />
+        <button class="btn waves-effect #306EFF blue ribbon" type="submit">submit</button>   
+             
+        <div class="nav-wrapper #fbc02d yellow darken-2">
+       <ul id="nav-mobile" class="right">
+        <li id="loginli" class="btn waves-effect #fbc02d yellow darken-2" ><a class="modal-trigger" href="#modal2">Log In</a></li>
+            </ul>
+            </div>
+       </form>
+      
+    </div>
+  </div>
+         
+      
+        <div class="clearfix">
+      
+     
+    <!--login Modal -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Log In</h4>
+      <form autocomplete="off" onsubmit="login(event)">
+        <input type="email" id="loginEmail" placeholder="email" />
+        <input type="password" id="loginPassword" placeholder="password" />
+        <button class="btn waves-effect #306EFF blue ribbon" type="submit">submit</button>   
+      </form>
+      
+                <div class="nav-wrapper #fbc02d yellow darken-2">
+       <ul id="nav-mobile" class="left">
+        <li id="signupli" class="btn waves-effect #fbc02d yellow darken-2" ><a class="modal-trigger" href="#modal1">Sing Up</a></li>
+            </ul>
+            </div>
+                      <div class="nav-wrapper #fbc02d yellow darken-2">
+       <ul id="nav-mobile" class="right">
+        <li id="loginli" class="btn waves-effect #fbc02d yellow darken-2" ><a class="modal-trigger" href="#modal2">Forget</a></li>
+            </ul>
+            </div>
+     
+    </div>
+  </div>
+    <!--edit profile -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Edit your details</h4>
+      <div class="file-field input-field">
+        <div class="btn #306EFF blue ribbon">
+          <span>File</span>
+          <input type="file" accept="image/*" onchange="uploadImage(event)" />
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <form autocomplete="off" id="editProfile" onsubmit="updateUserProfile(event)">
+        <input type="email" name="email" placeholder="Email" />
+        <input type="text" name="name" placeholder="Full Name" />
+        <input type="text" name="phone" placeholder="Phone Number" />
+        <input type="text" name="cuntry" placeholder="Cuntry" />
+        <input type="text" name="dateofbirth" placeholder="Date Of Birth" />
+        <input type="text" name="pass" placeholder="Password" />
+
+        <button class="btn waves-effect #fbc02d yellow darken-2" type="submit">submit</button>   
+      </form>
+  
+      
+     
+    </div>
+  </div>
+<div class="main">
+     <div class="center">
+    <h1>Account</h1>
+    <img id="proimg" class="circle" src="./assets/noimage.png" alt="noimage" style="width: 50%;height: auto;" />
+    <div class="userDetails"></div>
+  </div>
+         
+  <table id="table" style="display: none;">
+    <thead>
+      <tr>
+          <th>email</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Cuntry</th>
+          <th>dateofbirth</th>
+          <th>Pass</th>
+      </tr>
+    </thead>
+
+    <tbody id="tbody">
+     
+    </tbody>
+  </table>
+ </div>
+
+
+    <!--search end function -->
+    	<script>
+function openSearch() {
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function closeSearch() {
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>  
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+  });
+</script>  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-storage.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC39YGPKOV8S954JXGAXHpRQr7Bs_biB0Y",
+    authDomain: "telkop-2791c.firebaseapp.com",
+    projectId: "telkop-2791c",
+    storageBucket: "telkop-2791c.appspot.com",
+    messagingSenderId: "707546122336",
+    appId: "1:707546122336:web:3bc886903db25a868ddb05"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="./scripts/auth.js"></script>
+<script src="./scripts/firestore-db.js" ></script>
+
+</body>
+</html>
