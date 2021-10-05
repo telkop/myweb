@@ -2,7 +2,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 var options = {
-    "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
+    "key": "rzp_test_5Qr5F3i1W46rXF", // Enter the Key ID generated from the Dashboard
     "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     "currency": "INR",
     "name": "Acme Corp",
